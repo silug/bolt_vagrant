@@ -174,7 +174,7 @@ module Bolt # rubocop:disable Style/ClassAndModuleChildren
       end
 
       %r{^Vagrant\s*([0-9][0-9.]*)}.match(out) do |m|
-        if m[1].split('.').to_i >= 2
+        if m[1].split('.')[0].to_i >= 2
           return true
         end
       end
