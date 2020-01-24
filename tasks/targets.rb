@@ -14,7 +14,7 @@ module Bolt # rubocop:disable Style/ClassAndModuleChildren
       @vagrant_dir    = opts['vagrant_dir'].nil? ? opts['_boltdir'] : File.expand_path(opts['vagrant_dir'], opts['_boltdir'])
       @vagrant_binary = which('vagrant')
       @winrm_regex    = Regexp.new(opts['winrm_regex'] || 'windows')
-      @node_match     = Regexp.new(opts['match'])
+      @node_match     = opts['match'].nil? ? nil : Regexp.new(opts['match'])
     end
 
     def inventory_targets
