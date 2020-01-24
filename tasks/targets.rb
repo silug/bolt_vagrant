@@ -11,7 +11,7 @@ module Bolt # rubocop:disable Style/ClassAndModuleChildren
     def initialize(opts = {})
       @status         = nil
       @ssh_config     = {}
-      @vagrant_dir    = opts['vagrant_dir'] || Dir.pwd
+      @vagrant_dir    = opts['vagrant_dir'].nil? ? opts['_boltdir'] : File.expand_path(opts['vagrant_dir'], opts['_boltdir'])
       @vagrant_binary = which('vagrant')
       @winrm_regex    = Regexp.new(opts['winrm_regex'] || 'windows')
     end
